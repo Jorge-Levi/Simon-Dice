@@ -6,6 +6,7 @@ class Juego{
     }
 
     empezarJuego(){
+        this.elegirColor = this.elegirColor.bind(this);
         // alert("Hola Mundo");
         btnEmpezar.classList.add("hide");
         this.nivel = 7;
@@ -23,6 +24,7 @@ class Juego{
 
     siguienteNivel(){  
         this.iluminarSecuencia();
+        this.agregarEventosClick();
     }
 
     transformarNumeroColor(numero){
@@ -50,13 +52,22 @@ class Juego{
     
     iluminarColor(color){
         this.colores[color].classList.add('light');
-        console.log(`iluminando ${color}`);
         setTimeout(() => this.apagarColor(color),350);
     }
     
     apagarColor(color){
         this.colores[color].classList.remove('light');
-        console.log(`apagando ${color}`);
+    }
+
+    agregarEventosClick(){
+        this.colores.celeste.addEventListener('click',this.elegirColor);
+        this.colores.verde.addEventListener('click',this.elegirColor);
+        this.colores.violeta.addEventListener('click',this.elegirColor);
+        this.colores.naranja.addEventListener('click',this.elegirColor);
+    }
+
+    elegirColor(e){
+        console.log(this);
     }
 }
 
